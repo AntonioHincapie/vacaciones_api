@@ -15,6 +15,9 @@ gem "puma", "~> 5.0"
 # Gem to create env variables
 gem 'figaro'
 
+# Gem to paginate
+gem 'kaminari'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
