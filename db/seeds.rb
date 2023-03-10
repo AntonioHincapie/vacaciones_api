@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.create(name: "Marco", email: "marco@mail.com", password: "passwordM")
+User.create(name: "Antonio", email: "antonio@mail.com", password: "passwordA")
+
 Vacation.create(start_date: "2023-03-01", end_date: "2023-03-06", department: "IT", employee_name: "Andres Rodriguez")
 Vacation.create(start_date: "2023-02-01", end_date: "2023-02-06", department: "IT", employee_name: "Andres Rodriguez")
 Vacation.create(start_date: "2023-01-01", end_date: "2023-01-05", department: "IT", employee_name: "Andres Rodriguez")
