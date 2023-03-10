@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: vacaciones_api_production
-  username: vacaciones_api
-  password: <%= ENV["VACACIONES_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: vacaciones_api_production
+  # username: vacaciones_api
+  # password: <%= ENV["VACACIONES_API_DATABASE_PASSWORD"] %>
