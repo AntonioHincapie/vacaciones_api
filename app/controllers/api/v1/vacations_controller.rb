@@ -1,4 +1,6 @@
 class Api::V1::VacationsController < ApplicationController
+  before_action :authorize_request, only: %i[index show create update destroy]
+
   def index
     @vacations = Vacation.where(filter_params).page(params[:page]).per(params[:per_page || 20])
     render json: @vacations
