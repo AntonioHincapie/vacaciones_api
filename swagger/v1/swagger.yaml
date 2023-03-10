@@ -1,0 +1,385 @@
+---
+openapi: 3.0.1
+info:
+  title: Documentation API V1
+  description: Vacations API documentation
+  version: v1
+paths:
+  "/api/v1/auth/login":
+    post:
+      summary: Login user
+      tags:
+      - Login
+      description: Login user with valid authorization
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '404':
+          description: Username not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+        description: User validation
+  "/api/v1/users":
+    get:
+      summary: List users
+      tags:
+      - Users
+      description: List all users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  description:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+    post:
+      summary: Create a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  description:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '422':
+          description: Unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                description:
+                  type: string
+              required:
+              - email
+        description: Create a user
+  "/api/v1/users/{id}":
+    get:
+      summary: Show a user
+      tags:
+      - Users
+      description: Show a user
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: User identification
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  description:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+    put:
+      summary: Updates a user
+      tags:
+      - Users
+      description: Updates a user
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: User identification
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  description:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                description:
+                  type: string
+        description: Updates a user
+    delete:
+      summary: Delete a user
+      tags:
+      - Users
+      description: Delete a user
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: User identification
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: OK
+        '404':
+          description: Not Found
+  "/api/v1/vacations":
+    get:
+      summary: List vacations
+      tags:
+      - Vacations
+      description: List all vacations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  department:
+                    type: string
+                  employee_name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+    post:
+      summary: Create a vacation
+      tags:
+      - Vacations
+      parameters: []
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  department:
+                    type: string
+                  employee_name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '422':
+          description: Unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                department:
+                  type: string
+                employee_name:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - department
+              - employee_name
+        description: Create a vacation
+  "/api/v1/vacations/{id}":
+    get:
+      summary: Show a vacation
+      tags:
+      - Vacations
+      description: Show a vacation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Vacation identification
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  department:
+                    type: string
+                  employee_name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+    put:
+      summary: Updates a vacation
+      tags:
+      - Vacations
+      description: Updates a vacation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Vacation identification
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  department:
+                    type: string
+                  employee_name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                department:
+                  type: string
+                employee_name:
+                  type: string
+        description: Updates a vacation
+    delete:
+      summary: Delete a vacations
+      tags:
+      - Vacations
+      description: Delete a vacation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Vacation identification
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: OK
+        '404':
+          description: Not Found
+servers:
+- url: https://vacations-n2qv.onrender.com/
+  variables:
+    defaultHost:
+      default: vacations-n2qv.onrender.com//
