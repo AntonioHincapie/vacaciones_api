@@ -1,6 +1,6 @@
 class Api::V1::VacationsController < ApplicationController
   def index
-    @vacations = Vacation.where(filter_params).page(params[:page]).per(params[:per_page || 5])
+    @vacations = Vacation.where(filter_params).page(params[:page]).per(params[:per_page || 20])
     render json: @vacations
   end
 
