@@ -1,16 +1,15 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authorize_request, except: %i[create index]
-  before_action :set_user, only: %i[ show update destroy ]
 
   # GET /api/v1/users
   def index
     @users = User.all
-
     render json: @users
   end
 
   # GET /api/v1/users/1
   def show
+    @user = set_user
     render json: @user
   end
 
@@ -27,6 +26,7 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /api/v1/users/1
   def update
+    @user = set_user
     if @user.update(json_params)
       render json: @user
     else
@@ -36,7 +36,9 @@ class Api::V1::UsersController < ApplicationController
 
   # DELETE /api/v1/users/1
   def destroy
+    @user = set_user
     @user.destroy
+    render json: { message: 'User deleted' }
   end
 
   private

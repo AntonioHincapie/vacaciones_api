@@ -1,5 +1,5 @@
 class Api::V1::VacationsController < ApplicationController
-  before_action :authorize_request, only: %i[index show create update destroy]
+  before_action :authorize_request, only: %i[index show create destroy]
 
   def index
     @vacations = Vacation.where(filter_params).page(params[:page]).per(params[:per_page || 20])
@@ -7,39 +7,38 @@ class Api::V1::VacationsController < ApplicationController
   end
 
   def show
-    @vacation = Vacation.find(params[:id])
+    @vacation = set_vacation
     render json: @vacation
   end
 
   def create
-    @vacation = Vacation.new(vacation_params)
-
-    if @vacation.save
-      render json: @vacation, status: :created
-    else
-      render json: @vacation.errors, status: :unprocessable_entity
+    if json_params.empty?
+      render json: { error: 'No valid data found' }, status: :unprocessable_entity
     end
-  end
 
-  def update
-    @vacation = Vacation.find(params[:id])
-
-    if @vacation.update(vacation_params)
-      render json: @vacation
+    vacation = Vacation.new(json_params)
+    if vacation.save
+      render json: vacation, status: :created
     else
-      render json: @vacation.errors, status: :unprocessable_entity
+      render json: vacation.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @vacation = Vacation.find(params[:id])
+    @vacation = set_vacation
     @vacation.destroy
+    render json: { message: 'Vacation deleted' }
   end
 
   private
 
-  def vacation_params
-    params.require(:vacation).permit(:start_date, :end_date, :department, :employee_name)
+  def set_vacation
+    @vacation = Vacation.find(params[:id])
+  end
+
+  def json_params
+    allowed_data = %(start_date end_date department employee_name).freeze
+    json_payload.select { |allow| allowed_data.include?(allow) }
   end
 
   def filter_params
