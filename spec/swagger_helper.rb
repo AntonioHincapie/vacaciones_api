@@ -23,10 +23,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://vacations-n2qv.onrender.com/',
+          url: 'https://vacations-foht.onrender.com/',
           variables: {
             defaultHost: {
-              default: 'vacations-n2qv.onrender.com//'
+              default: 'vacations-foht.onrender.com//'
             }
           }
         }

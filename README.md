@@ -2,6 +2,10 @@
 
 This API is build to manage the vacations of your employees on your onw company, it has a simple model of data to store the user and the vacations of the employees filtered by deparment. Also you can upload data with a csv file downloaded from GSheets. The front-end of this app is developed in React.js
 
+## Live DEMO
+
+- [API Documentation](https://vacations-foht.onrender.com/api-docs/index.html)
+
 ## Front-end Repo
 
 - [Link to front-end repo](https://github.com/AntonioHincapie/vacation_app)
