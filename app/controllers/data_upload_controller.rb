@@ -1,11 +1,14 @@
+require 'csv'
+
 class DataUploadController < ApplicationController
   def upload
     file = params[:file]
 
     if file.present?
-      data = CSV.parse(file.read, headers: true)
+      data = File.read(file)
+      dataCSV = CSV.parse(data, headers: true, encoding: 'ISO-8859-1')
 
-      data.each do |row|
+      dataCSV.each do |row|
         Vacation.create!(
           start_date: row['Start Date'],
           end_date: row['End Date'],
@@ -14,7 +17,7 @@ class DataUploadController < ApplicationController
         )
       end
 
-      render json: { message: 'Data uploaded successfully' }
+      render json: { message: "#{dataCSV.class}" }
     else
       render json: { error: 'No file found' }, status: :unprocessable_entity
     end
