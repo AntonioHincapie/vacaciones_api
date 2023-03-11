@@ -34,7 +34,8 @@ describe 'Users' do
           type: :object,
           properties: {
             email: { type: :string },
-            description: { type: :string }
+            name: { type: :string },
+            password: { type: :string }
           },
           required: %w[email]
       }
@@ -74,7 +75,7 @@ describe 'Users' do
           properties: {
             id: { type: :integer },
             email: { type: :string },
-            description: { type: :string },
+            name: { type: :string },
             created_at: { type: :string },
             updated_at: { type: :string }
           }
@@ -111,7 +112,7 @@ describe 'Users' do
           type: :object,
           properties: { 
             email: { type: :string },
-            description: { type: :string }
+            name: { type: :string }
           }
         }
       response '200', 'OK' do
@@ -119,7 +120,7 @@ describe 'Users' do
           properties: {
             id: { type: :integer },
             email: { type: :string },
-            description: { type: :string },
+            name: { type: :string },
             created_at: { type: :string },
             updated_at: { type: :string }
           }
