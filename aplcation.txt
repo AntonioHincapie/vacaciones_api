@@ -1,0 +1,3 @@
+DATABASE_HOST: host of your postgres database (localhost)
+DATABASE_USER: name of your user on postgres (postgres)
+DATABASE_PASSWORD: your password for the user on postgres
