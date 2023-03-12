@@ -17,7 +17,7 @@ class DataUploadController < ApplicationController
         )
       end
 
-      render json: { message: "#{dataCSV.class}" }
+      render json: { message: "File uploaded successfull y#{dataCSV.Name}" }, status: :ok
     else
       render json: { error: 'No file found' }, status: :unprocessable_entity
     end
