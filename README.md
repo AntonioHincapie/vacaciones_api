@@ -1,6 +1,6 @@
 # Vacations API
 
-This API is build to manage the vacations of your employees on your onw company, it has a simple model of data to store the user and the vacations of the employees filtered by deparment. Also you can upload data with a csv file downloaded from GSheets. The front-end of this app is developed in React.js
+This API is built to manage the vacations of your employees in your own company, it has a simple model of data to store the user and the vacations of the employees filtered by department. Also, you can upload data with a CSV file downloaded from GSheets. The front end of this app is developed in React.js
 
 ## Live DEMO
 
